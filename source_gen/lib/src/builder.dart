@@ -61,26 +61,9 @@ class _Builder extends Builder {
           ]
         }),
         formatOutput = formatOutput ?? _formatter.format,
-        _header = (header ?? defaultFileHeader).trim() {
-    if (_generatedExtension.isEmpty || !_generatedExtension.startsWith('.')) {
-      throw ArgumentError.value(
-        _generatedExtension,
-        'generatedExtension',
-        'Extension must be in the format of .*',
-      );
-    }
-    if (_isLibraryBuilder && _generators.length > 1) {
-      throw ArgumentError(
-        'A standalone file can only be generated from a single Generator.',
-      );
-    }
-    if (options != null && additionalOutputExtensions.isNotEmpty) {
-      throw ArgumentError(
-        'Either `options` or `additionalOutputExtensions` parameter '
-        'can be given. Not both.',
-      );
-    }
-  }
+
+         /// HACK: Temporarily disable all generate headers
+        _header = '';
 
   @override
   Future<void> build(BuildStep buildStep) async {
