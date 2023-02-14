@@ -196,14 +196,16 @@ Map<String, List<String>> validatedBuildExtensionsFrom(
     }
 
     final output = entry.value;
-    if (output is! String || !output.endsWith('.dart')) {
-      throw ArgumentError(
-        'Invalid output extension `$output`. It should be a '
-        'string ending with `.dart`',
-      );
-    }
 
-    result[input] = [output];
+    /// HACK: Temporarily disable output extension value check
+    // if (output is! String || !output.endsWith('.dart')) {
+    //   throw ArgumentError(
+    //     'Invalid output extension `$output`. It should be a '
+    //     'string ending with `.dart`',
+    //   );
+    // }
+
+    result[input] = [output as String];
   }
 
   if (result.isEmpty) {
