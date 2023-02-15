@@ -137,14 +137,16 @@ class _Builder extends Builder {
 
     for (var item in generatedOutputs) {
       contentBuffer
-        ..writeln()
-        ..writeln(_headerLine)
-        ..writeAll(
-          LineSplitter.split(item.generatorDescription)
-              .map((line) => '// $line\n'),
-        )
-        ..writeln(_headerLine)
-        ..writeln()
+
+        /// HACK: Temporarily disable all generate headers
+        // ..writeln()
+        // ..writeln(_headerLine)
+        // ..writeAll(
+        //   LineSplitter.split(item.generatorDescription)
+        //       .map((line) => '// $line\n'),
+        // )
+        // ..writeln(_headerLine)
+        // ..writeln()
         ..writeln(item.output);
     }
 
